@@ -1,19 +1,23 @@
 const mongoose = require("mongoose");
 
-const PostLike = new mongoose.Schema(
+const MessageSchema = new mongoose.Schema(
   {
-    postId: {
+    conversation: {
       type: mongoose.Types.ObjectId,
-      ref: "post",
+      ref: "conversation",
       required: true,
     },
-    userId: {
+    sender: {
       type: mongoose.Types.ObjectId,
       ref: "user",
+      required: true,
+    },
+    content: {
+      type: String,
       required: true,
     },
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("postLike", PostLike);
+module.exports = mongoose.model("message", MessageSchema);

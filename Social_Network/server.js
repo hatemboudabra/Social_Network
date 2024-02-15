@@ -1,14 +1,17 @@
 const express = require ('express')
-const dotenv = require('dotenv');
 const mongoose = require('mongoose')
+const dotenv = require('dotenv');
 const cors = require('cors')
-
-//app.use( cors())
+//const path = require("path");
+const PostLike = require("./models/PostLike");
+const Post = require("./models/Post")
 dotenv.config()
+//app.use( cors())
 const MONGODB_URI = process.env.MONGODB_URI
 const PORT = process.env.PORT || 5000
 const app = express()
 app.use(express.json())
+
 
 mongoose.connect(MONGODB_URI).then(()=>{
     console.log('connected to MongoDb');
@@ -19,10 +22,10 @@ mongoose.connect(MONGODB_URI).then(()=>{
     console.error('Error connecting to mongodb:',err.message)
 })
 app.get('/',(req,res)=>{
-    return res.status(200).send('hello chabeb !')
+    return res.status(200).send('hello world !')
 })
     /*
-app.listen(4000,()=>{
+    app.listen(4000,()=>{
     console.log(`server listening on 4000`)
 })
 */
