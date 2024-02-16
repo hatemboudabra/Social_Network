@@ -11,7 +11,7 @@ const MONGODB_URI = process.env.MONGODB_URI
 const PORT = process.env.PORT || 5000
 const app = express()
 app.use(express.json())
-
+const users = require("./routes/users");
 
 mongoose.connect(MONGODB_URI).then(()=>{
     console.log('connected to MongoDb');
