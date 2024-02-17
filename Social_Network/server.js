@@ -5,6 +5,7 @@ const cors = require('cors')
 //const path = require("path");
 const PostLike = require("./models/PostLike");
 const Post = require("./models/Post")
+const swaggerDoc = require('./swagger')
 dotenv.config()
 //app.use( cors())
 const MONGODB_URI = process.env.MONGODB_URI
@@ -12,6 +13,7 @@ const PORT = process.env.PORT || 5000
 const app = express()
 app.use(express.json())
 const users = require("./routes/users");
+app.use('/api-docs',swaggerDoc.serve,swaggerDoc.setup)
 
 mongoose.connect(MONGODB_URI).then(()=>{
     console.log('connected to MongoDb');
