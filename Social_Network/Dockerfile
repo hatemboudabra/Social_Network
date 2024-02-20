@@ -1,21 +1,10 @@
-# Utiliser une image de base Node.js
-FROM node:14
+FROM node:20-alpine
 
-# Définir le répertoire de travail dans le conteneur
+COPY . /usr/src/app
 WORKDIR /usr/src/app
 
-# Copier les fichiers nécessaires
-COPY package*.json ./
-COPY server.js ./
-COPY models ./models
-COPY routes ./routes
-#COPY swagger ./swagger
-
-# Installer les dépendances
 RUN npm install
+RUN npm install -g nodemon
 
-# Exposer le port sur lequel l'application écoute
 EXPOSE 5000
-
-# Commande pour démarrer l'application
-CMD ["node", "server.js"]
+CMD [ "nodemon", "server.js"]
