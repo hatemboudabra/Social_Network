@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha" 
   },
   "keywords": [],
   "author": "",
@@ -23,5 +23,10 @@
     "swagger-jsdoc": "5.0.1",
     "swagger-ui-express": "^5.0.0",
     "validator": "^13.11.0"
+  },
+  "devDependencies": {
+    "chai": "^5.1.0",
+    "mocha": "^10.3.0",
+    "sinon": "^17.0.1"
   }
 }
