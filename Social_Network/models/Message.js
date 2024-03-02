@@ -1,23 +1,14 @@
-const mongoose = require("mongoose");
+'use strict'
 
-const MessageSchema = new mongoose.Schema(
-  {
-    conversation: {
-      type: mongoose.Types.ObjectId,
-      ref: "conversation",
-      required: true,
-    },
-    sender: {
-      type: mongoose.Types.ObjectId,
-      ref: "user",
-      required: true,
-    },
-    content: {
-      type: String,
-      required: true,
-    },
-  },
-  { timestamps: true }
-);
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-module.exports = mongoose.model("message", MessageSchema);
+var MessageSchema = Schema({
+    text: String,
+    viewed: Boolean,
+    created_at: String,
+    emitter: { type: Schema.ObjectId, ref: 'User'},
+    receiver: { type: Schema.ObjectId, ref: 'User'}
+});
+
+module.exports = mongoose.model("Message", MessageSchema);
